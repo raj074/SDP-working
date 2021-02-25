@@ -1,15 +1,47 @@
 <% layout('layouts/boilerplate') %>
-    <div class="row">
-        <div class="col-6 ">
+    <!-- <div class="row"> -->
+        <!-- <div class="col-9">
             <% if(post.image){ %>
                 <img src="<%= post.image %>" class="img-thumbnail" alt="">
             <% } %>
                     <h3>
                         <%= post.body %>
                     </h3>
+                    <% if( currentUser && post.author.equals(currentUser) ){ %> 
                     <form action="/viewPost/<%= post._id %>?_method=DELETE" method="POST">
                         <button>delete post</button>
                     </form>
+                    <% } %> 
+            <% if(post.childReply && post.childReply!=""){ let count=true%> 
+            <div class="my-3" style="margin-left: 70px;border: none;">
+
+                <% for(let reply of post.childReply){ ;%>
+                    <a href="/viewPost/<%= reply._id %>" style="text-decoration: none;">
+                        <div class="loaded-post py-2" style="border-radius: 15px;margin-bottom: 0px;background-color:<%= count==true?'#6155a6':'#a685e2' %>;">
+
+                            <div class="row" style="align-items: center;">
+                                <div class="col-auto">
+                                    <img src="<%= reply.author.profile %>" style="height: 50px;width: 50px;border-radius: 50%;">
+                                </div>
+                                <div class="col-auto">
+                                    <h5><%= reply.author.username %></h5>
+                                </div>
+                            </div>
+                            <div>
+                                <div style="margin-left: 4.6em;"><h6><%= reply.body %></h6></div>
+                                <div class="reply-image d-flex" style="justify-content: center;">
+                                    <% if(reply.image){ %>
+                                        <img src="<%= reply.image %>" style="height: auto;max-height: 300px;width: auto;max-width: 300px;">
+                                    <% } %>  
+                                </div>
+                                
+                            </div>
+
+                        </div>
+                    </a>
+                <% count = !count;  } %>
+            </div>
+            <% } %>
         </div>
         <div class="col-3">
             <form action="/viewPost/<%= post._id %>/reply" method="POST" class="form validate-form" novalidate>
@@ -19,22 +51,87 @@
                     Looks good!
                 </div>
                 <input type="text" name="post[image]" placeholder="image url">
-                <button class="btn btn-primary">Post</button>
+                <button id="aaa" class="btn-1">Post</button>
             </form>
-            <div class="mt-3">
-                <% for(let reply of post.childReply){ %>
-                    <a href="/viewPost/<%= reply._id %> ">
-                        <div class="card mb-3">
-                            <div class="card-body">
-                                <div class="card-text">
-                                    <%= reply.body %>
-                                </div>
+            
+        </div> -->
 
 
-                            </div>
-                        </div>
-                    </a>
-                    <% } %>
+    <article class="media">
+        <figure class="media-left">
+            <p class="image is-64x64 is-square">
+                <img src="<%= post.author.profile %> " class="is-rounded">
+            </p>
+        </figure>
+        <div class="media-content">
+            <div class="content">
+                <p>
+                    <strong>
+                        <%= post.author.username %>
+                    </strong>
+                    <br>
+                    <%= post.body %>
+                        <br>
+                        <small><a>Like</a> · <a>Reply</a> · 3 hrs</small>
+                </p>
             </div>
+            <% for(let reply of post.childReply){ %>
+                <a href="/viewPost/<%= reply._id %>" style="text-decoration: none;">
+            <article class="media">
+                <figure class="media-left">
+                    <p class="image is-48x48 is-square">
+                        <img src="<%= reply.author.profile %>" class="is-rounded">
+                    </p>
+                </figure>
+                <div class="media-content">
+                    <div class="content">
+                        <p>
+                            <strong><%= reply.author.username %> </strong>
+                            <br>
+                            <%= reply.body %> 
+                            <br>
+                            <small><a>Like</a> · <a>Reply</a> · 2 hrs</small>
+                        </p>
+                    </div>
+    
+                 
+                </div>
+            </article>
+            </a>
+            <% } %>
+            
         </div>
-    </div>
+    </article>
+    
+    <article class="media">
+        
+        <div class="media-content">
+            <form action="/viewPost/<%= post._id %>/reply" method="POST" class="form validate-form" novalidate>
+                <div class="field">
+                    <p class="control">
+                        <textarea style="resize: none;" name="post[body]" id="body" cols="5" rows="5" class="textarea" placeholder="Add a reply..." required></textarea>
+                        
+                    </p>
+                    
+                </div>
+                
+                
+                
+                <div class="field">
+                    <p class="control">
+                        <input type="text" class="input" name="post[image]" placeholder="image url">
+                    </p>
+                </div>
+                <div class="field">
+                    <p class="control">
+                        <button  class="btn-1 outer-shadow hover-in-shadow">Post</button>
+                    </p>
+                </div>
+                
+            </form>
+            
+           
+        </div>
+    </article>
+
+    

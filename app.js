@@ -38,6 +38,7 @@ app.set("css", path.join(__dirname, "css"));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname,'public')));
+app.use(express.static(path.join(__dirname,'dist')));
 
 const sessionConfig = {
   secret:"thisissecret",
@@ -60,6 +61,7 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.use((req,res,next) => {
+  res.locals.currentUser = req.user;
   res.locals.success = req.flash('success');
   res.locals.error = req.flash("error");
   next();
@@ -81,3 +83,4 @@ app.use((err,req,res,next) => {
 app.listen(8080, () => {
   console.log("listening on port 8080");
 });
+

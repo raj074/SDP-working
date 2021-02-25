@@ -1,0 +1,56 @@
+<% layout('layouts/boilerplate') %>
+
+  
+<div class="container-fluid " >
+    <div class="middle-block pt-5">
+        <!-- <img src="/img/iceland.jpg" class="img-fluid" style="z-index: 1;" alt=""> -->
+        <img class="profile-pic" src="<%= user.profile %>" alt="" style="">
+        <h2 class="py-3"><%= user.username %></h2>
+        <h5 class="mb-5"><%= user.status %> </h5>
+        <div class="nav-tabs-links mt-auto d-flex">
+            <nav>
+                <div class="nav nav-tabs d-flex" id="nav-tab" role="tablist" style="justify-content: center;">
+                    <a class="nav-link active " id="nav-home-tab" data-bs-toggle="tab" href="#nav-post" role="tab">Posts</a>
+                    <a class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" href="#nav-profile" role="tab">Profile</a>
+                    <a class="nav-link " id="nav-contact-tab" data-bs-toggle="tab" href="#nav-contact" role="tab">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="tab-content bg-white" id="nav-tabContent" >
+        <div class="tab-pane fade show active" id="nav-post" role="tabpanel" aria-labelledby="nav-home-tab">
+            <% for(let post of posts){%>
+                <img src="<%= post.image %>"  alt="">
+                   
+                
+            <% } %> 
+            <!-- <div class="column">
+                <img src="/img/instagram_1.jpg">
+                <img src="/img/instagram_2.jpg">
+                <img src="/img/instagram_3.jpg">
+                <img src="/img/instagram_4.jpg">
+                <img src="/img/instagram_5.jpg">
+                <img src="/img/instagram_6.jpg">
+                <img src="/img/instagram_7.jpg">
+            </div>
+            <div class="column">
+                <img src="/img/instagram_8.jpg">
+                <img src="/img/instagram_9.jpg">
+                <img src="/img/instagram_10.jpg">
+                <img src="/img/instagram_11.jpg">
+                <img src="/img/instagram_12.jpg">
+                <img src="/img/instagram_13.jpg">
+            </div>
+            <div class="column">
+                <img src="/img/instagram_14.jpg">
+                <img src="/img/instagram_15.jpg">
+                <img src="/img/instagram_16.jpg">
+                <img src="/img/instagram_17.jpg">
+                <img src="/img/instagram_18.jpg">   
+            </div> -->
+            
+        </div>
+        <div class="tab-pane fade" style="height: auto;" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">profile</div>
+        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">Contact</div>
+    </div>
+</div>

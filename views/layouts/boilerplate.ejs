@@ -8,10 +8,12 @@
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-   <link rel="stylesheet" href="/css/styles.css"> 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+   <!-- <link rel="stylesheet" href="css/main.css">  -->
+   <link rel="stylesheet" href="css/styles.css">
 
 </head>
-<body class="d-flex flex-column vh-100 with-top-navbar light-mode">
+<body class="d-flex flex-column vh-100 with-top-navbar">
  
   
     <%- include('../partials/navbar') %> 
@@ -20,10 +22,12 @@
 
     <main class="container" style="margin-top: 100px ;">
         <div class="row">
+            <% if(currentUser){ %> 
             <div class="col-lg-3 col-md-12">
                 <%- include('../partials/sidebar') %>
             </div>
-            <div class="col-lg-9 col-md-12">
+            <% } %> 
+            <div class="col-auto col-lg-9 col-md-12">
                 <%- include('../partials/flash') %>
                 <%- body %>
             </div>
@@ -36,10 +40,11 @@
         integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
         crossorigin="anonymous"></script>
 
-        <script src="/js/jquery.min.js"></script>
-        <script src="/js/vanilla-tilt.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <!-- <script src="/js/vanilla-tilt.js"></script> -->
         <script src="/js/script.js"></script>
 
     <script src="/js/validateForm.js"></script>
+    <script src="https://kit.fontawesome.com/a116b51ef4.js" crossorigin="anonymous"></script>
 </body>
 </html>

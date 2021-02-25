@@ -4,6 +4,10 @@ const Schema = mongoose.Schema;
 const postSchema = new Schema({
   body: String,
   image: String,
+  author: {
+    type:Schema.Types.ObjectId,
+    ref: "User"
+  },
   parentReply: [
     {
       type: Schema.Types.ObjectId,

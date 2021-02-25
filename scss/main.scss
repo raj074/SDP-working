@@ -1,0 +1,16 @@
+@import 'config';
+@import 'show';
+
+
+
+body{
+     margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color:$bg-50;  
+    color: $primary-color;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height:1;
+}
+
+

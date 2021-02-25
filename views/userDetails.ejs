@@ -1,0 +1,9 @@
+<% layout('layouts/boilerplate') %>
+
+<form action="/userDetails/<%= currentUser._id %>" method="POST">
+    <label for="profile">Profile photo</label>
+    <input type="text" id="profile" name="profile" value="<%= currentUser.profile %>">
+    <label for="status">Status</label>
+    <input type="text" id="status" name="status" value="<%= currentUser.status %>">
+    <button class="btn btn-info">Update</button>
+</form>
